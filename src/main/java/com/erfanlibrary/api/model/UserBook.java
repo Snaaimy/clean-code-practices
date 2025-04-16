@@ -11,8 +11,8 @@ import lombok.Setter;
 @Entity
 @Setter
 @Getter
-@Table(name = "customer_book")
-public class CustomerBook {
+@Table(name = "user_book")
+public class UserBook {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,8 +20,8 @@ public class CustomerBook {
     public Integer id;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer_id", nullable = false)
-    public Customer user;
+    @JoinColumn(name = "user_id", nullable = false)
+    public User user;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "book_id", nullable = false)

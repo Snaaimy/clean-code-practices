@@ -7,7 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 @Entity @Setter @Getter
 @Table(name = "customer")
-public class Customer {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,6 +16,7 @@ public class Customer {
 
     @Column(name = "full_name", nullable = false)
     String fullName;
+
 
     @Column(name = "email", nullable = false, unique = true)
     String email;
@@ -29,5 +30,10 @@ public class Customer {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     Address address;
+
+
+    public String getCity() {
+        return this.address != null ? address.getCity() : "Unknown";
+    }
 
 }
